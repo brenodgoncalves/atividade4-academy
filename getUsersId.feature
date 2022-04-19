@@ -3,9 +3,23 @@ Feature:Encontrar um usuário
     Desejo consultar os dados de um usuário
     Para visualizar as informações deste usuário
 
-    Scenario:Encontrar um usuário
+    Background: Url
         Given url baseUrl
-        And path "users","d67936d7-13ab-4bda-85ba-8cdc0e36ba41"
+        And path "users"
+
+    Scenario:Encontrar um usuário
+        * def idGet = "0016f2e9-c9d4-4aa5-8a59-dda9fc6e5f26"
+        And path idGet
         When method get
         Then status 200
+        And match response contains {id: "#present"}
         And match response contains {name: "#present"}
+        And match response contains {email: "#present"}
+        And match response contains {createdAt: "#present"}
+        And match response contains {updatedAt: "#present"}
+
+    Scenario:Procurar por usuário nao existente
+        * def iddGet = "0016f2e9-c9d4-4aa5-8a59-dda9fc6"
+        And path iddGet
+        When method get
+        Then status 400

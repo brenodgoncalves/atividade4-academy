@@ -3,6 +3,7 @@ Feature: Listar usuários
     Desejo consultar todos os usuários cadastrados
     Para ter as informações de todos os usuários
 
+
     Scenario: Listar todos os usuários
         Given url baseUrl
         And path "users"
@@ -14,3 +15,4 @@ Feature: Listar usuários
         And match response[*].email == "#present"
         And match response[*].createdAt == "#present"
         And match response[*].updatedAt == "#present"
+        
