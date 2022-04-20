@@ -3,12 +3,15 @@ Feature:Criar usuário
     Desejo registrar informações de usuário
     Para poder manipular estas informações livremente
 
-    Background: Url
+    Background: Criando requisições 
+        * def nameAleatorio = Date.now().toString()
+        * def emailAleatorio = Date.now().toString()+"@email.com"
+        * def emailInvalido = Date.now().toString()+"email.com"
+        * def reqPost = read("payloadCriarAleatorio.json")
         Given url baseUrl
         And path "users"
 
-    Scenario: Cadastrar usuário 
-        * def reqPost = read("payloadCriarUsuario.json")
+    Scenario: Cadastrar usuário        
         And request reqPost    
         When method post
         Then status 201

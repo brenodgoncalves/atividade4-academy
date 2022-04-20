@@ -1,4 +1,4 @@
 {
     "name": "#(nameAleatorio)",
-    "email": "#(emailInvalido)"
+    "email": "#(emailAleatorio)"
 }

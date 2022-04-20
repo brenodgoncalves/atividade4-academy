@@ -3,12 +3,12 @@ Feature:Remover um usuário
     Desejo remover um usuário
     Para que suas informações não estejam mais registradas
 
-    Background: Url
+    Scenario: Deletar usuário 
+        * def hookEsmaga = call read("hook.feature")
+        And request hookEsmaga
+        * def id = hookEsmaga.response.id
         Given url baseUrl
         And path "users"
-        * def idDelete = "176b812d-4a93-4666-9abe-c4fef2a90f7a"
-        
-    Scenario:Remover um usuário
-        And path idDelete
+        And path id
         When method delete
         Then status 204
